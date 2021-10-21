@@ -1,0 +1,18 @@
+package com.clarkelamothe.intermedia.data.characters
+
+import com.clarkelamothe.intermedia.data.models.CharacterResult
+import com.clarkelamothe.intermedia.data.models.Data
+import com.clarkelamothe.intermedia.data.models.MarvelResponse
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface CharactersService {
+
+    @GET("characters")
+    suspend fun fetchCharacters(
+        @Query("apikey") api_key: String,
+        @Query("hash") hash: String,
+        @Query("ts") ts: String,
+    ): Response<MarvelResponse<Data<List<CharacterResult>>>>
+}
