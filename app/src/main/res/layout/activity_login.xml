@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondaryColor"
-    tools:context=".LoginActivity">
+    tools:context=".ui.auth.LoginActivity">
 
     <View
         android:id="@+id/black_box"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:background="@color/primaryDarkColor"
+        android:background="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +22,7 @@
         android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="@id/black_box"
         app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/logo_description"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +43,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeErrorColor="@color/colorAccent"
             android:layout_marginBottom="22dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,6 +53,7 @@
                 android:background="@color/secondaryDarkColor"
                 android:drawableStart="@drawable/ic_email_black_24dp"
                 android:drawablePadding="12dp"
+
                 android:hint="@string/login_email_hint"
                 android:inputType="textEmailAddress"
                 android:padding="16dp"
@@ -63,7 +66,11 @@
             android:layout_marginBottom="22dp"
             app:passwordToggleContentDescription="password"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
+            app:boxStrokeErrorColor="@color/colorAccent"
+            app:endIconTint="@color/secondaryColor"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/colorAccent"
+            app:passwordToggleTint="@color/primaryLightColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
@@ -86,6 +93,7 @@
             android:text="@string/button_login_text" />
 
         <LinearLayout
+            android:id="@+id/create_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

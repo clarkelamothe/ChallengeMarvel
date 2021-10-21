@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".ui.auth.SignupActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -52,6 +52,11 @@
                 android:background="@color/secondaryDarkColor"
                 android:drawableStart="@drawable/ic_lock_black_24dp"
                 android:drawablePadding="12dp"
+                app:boxStrokeErrorColor="@color/colorAccent"
+                app:endIconTint="@color/secondaryColor"
+                app:errorEnabled="true"
+                app:passwordToggleContentDescription="password"
+                app:passwordToggleEnabled="true"
                 android:hint="@string/login_password_hint"
                 android:inputType="textEmailAddress"
                 android:padding="16dp"
@@ -64,6 +69,9 @@
             android:layout_marginBottom="22dp"
             app:passwordToggleContentDescription="password"
             app:passwordToggleEnabled="true"
+            app:boxStrokeErrorColor="@color/colorAccent"
+            app:endIconTint="@color/secondaryColor"
+            app:errorEnabled="true"
             app:passwordToggleTint="@color/colorAccent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -80,13 +88,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:text="@string/signup_create_account" />
 
         <LinearLayout
+            android:id="@+id/have_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -102,7 +111,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="@string/button_login_text"
                 android:textColor="@color/primaryDarkColor" />
         </LinearLayout>
 
