@@ -14,4 +14,8 @@
     <string name="login_password_hint">Password</string>
     <string name="login_confirm_password_hint">Confirm Password</string>
     <string name="signup_create_account">Create Account</string>
+    <string name="button_login_text">Login</string>
+    <string name="is_it_new_user_text">New User?</string>
+    <string name="create_an_account_text">Create an Account</string>
+    <string name="new_account_text">Already have an account?</string>
 </resources>
