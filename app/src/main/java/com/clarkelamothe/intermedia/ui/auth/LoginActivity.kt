@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.clarkelamothe.intermedia.databinding.ActivityLoginBinding
-import com.clarkelamothe.intermedia.ui.characters.CharactersActivity
+import com.clarkelamothe.intermedia.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -52,9 +52,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkResult(isSuccess: Boolean) {
-        val i = Intent(this, CharactersActivity::class.java)
         if (isSuccess) {
-            startActivity(i)
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
             Toast.makeText(this, "Authentication failed...", Toast.LENGTH_SHORT).show()

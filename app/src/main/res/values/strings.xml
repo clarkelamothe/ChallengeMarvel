@@ -11,4 +11,10 @@
     <string name="create_an_account_text">Create an Account</string>
     <string name="new_account_text">Already have an account?</string>
     <string name="logo_description">Marvel Challenge Logo</string>
+
+    <!--    bottom nav-->
+    <string name="bottom_nav_first_item_text">Characters</string>
+    <string name="bottom_nav_second_item_text">Events</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

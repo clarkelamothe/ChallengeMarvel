@@ -6,12 +6,12 @@
     app:startDestination="@id/charactersFragment">
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="com.clarkelamothe.intermedia.CharactersFragment"
+        android:name="com.clarkelamothe.intermedia.ui.characters.CharactersFragment"
         android:label="Characters"
         tools:layout="@layout/fragment_characters" />
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.clarkelamothe.intermedia.EventsFragment"
+        android:name="com.clarkelamothe.intermedia.ui.events.EventsFragment"
         android:label="Events"
         tools:layout="@layout/fragment_events" />
 </navigation>
