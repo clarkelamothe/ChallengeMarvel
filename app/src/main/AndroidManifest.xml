@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Intermedia">
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.auth.SignupActivity"
             android:exported="true" />

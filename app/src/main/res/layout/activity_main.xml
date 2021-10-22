@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,26 +7,26 @@
     android:background="@color/secondaryColor"
     tools:context=".ui.MainActivity">
 
-    <include
-        android:id="@+id/bar_top"
-        layout="@layout/bar_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top" />
-
-    <fragment
-        android:id="@+id/homeFragmentContainer"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:openDrawer="start">
 
-    <include
-        android:id="@+id/bar_bottom"
-        layout="@layout/bar_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <include
+            android:id="@+id/content_home"
+            layout="@layout/content_home" />
+
+        <include
+            android:id="@+id/top_and_bottom_bar"
+            layout="@layout/top_and_bottom_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,23 +10,25 @@ import androidx.navigation.ui.setupWithNavController
 import com.clarkelamothe.intermedia.R
 import com.clarkelamothe.intermedia.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.barTop.toolbar)
-        bottomNavigationView = binding.barBottom.bottomNavView
+        setSupportActionBar(binding.topAndBottomBar.barTop.toolbar)
+        navController = findNavController(R.id.fragmentContainerView)
+        bottomNavigationView = binding.topAndBottomBar.barBottom.bottomNavView
         appBarConfiguration =
             AppBarConfiguration(setOf(R.id.charactersFragment, R.id.eventsFragment))
-        navController = findNavController(R.id.homeFragmentContainer)
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.apply {
             itemIconTintList = null

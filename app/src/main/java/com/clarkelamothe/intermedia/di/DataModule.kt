@@ -1,5 +1,7 @@
 package com.clarkelamothe.intermedia.di
 
+import com.clarkelamothe.intermedia.data.characters.CharactersDataSource
+import com.clarkelamothe.intermedia.data.characters.CharactersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,13 @@ class DataModule {
     fun provideOkHttpClient() = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
+
+    @Provides
+    fun provideCharactersService(@ApiMarvel retrofit: Retrofit): CharactersService =
+        retrofit.create(CharactersService::class.java)
+
+    @Provides
+    fun provideCharactersDataSource(characterService: CharactersService): CharactersDataSource {
+        return CharactersDataSource(characterService)
+    }
 }

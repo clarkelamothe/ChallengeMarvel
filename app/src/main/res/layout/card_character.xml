@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="9dp"
+    android:background="@drawable/card_background"
+    android:elevation="8dp"
+    android:minHeight="120dp">
+
+    <ImageView
+        android:id="@+id/character_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/character_thumbnail"
+        android:minWidth="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/character_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Title2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/character_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Thanos" />
+
+    <TextView
+        android:id="@+id/character_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:lines="1"
+        android:maxLines="1"
+        android:textAppearance="@style/Content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/character_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/character_name"
+        app:layout_constraintTop_toBottomOf="@+id/character_name"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Using the power of the Infinity Stones, Thanos... believes he can ultimately save the universe by wiping out half of its population." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
