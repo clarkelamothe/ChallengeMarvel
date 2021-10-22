@@ -17,4 +17,6 @@
     <string name="bottom_nav_second_item_text">Events</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="character_thumbnail">Image of the marvel hero</string>
+    <string name="character_details_comics_header">Appears in these comics</string>
 </resources>

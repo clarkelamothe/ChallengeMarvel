@@ -9,8 +9,15 @@ import com.squareup.picasso.Picasso
 
 class CharactersViewHolder(
     view: View,
+    private val listener: CharactersFragment,
 ) : RecyclerView.ViewHolder(view) {
     private val binding = CardCharacterBinding.bind(view)
+
+    init {
+        itemView.setOnClickListener {
+            listener.onCharacterClick(adapterPosition)
+        }
+    }
 
     fun bind(character: CharacterResult) {
         binding.apply {

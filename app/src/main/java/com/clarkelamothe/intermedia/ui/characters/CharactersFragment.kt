@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.clarkelamothe.intermedia.R
 import com.clarkelamothe.intermedia.data.Resource
 import com.clarkelamothe.intermedia.databinding.FragmentCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +32,7 @@ class CharactersFragment : Fragment() {
                     Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
                 }
                 Resource.Status.SUCCESS -> {
-                    charactersAdapter = CharactersAdapter(it.data!!.results)
+                    charactersAdapter = CharactersAdapter(it.data!!.results, this)
                     binding.rvCharacters.adapter = charactersAdapter
                 }
                 Resource.Status.ERROR -> {
@@ -40,5 +42,11 @@ class CharactersFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    fun onCharacterClick(position: Int) {
+        val clickedItem = charactersAdapter.characters[position]
+        Toast.makeText(context, "${clickedItem.id}", Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.goToDetailsFragment)
     }
 }
