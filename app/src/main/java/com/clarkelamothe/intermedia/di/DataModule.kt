@@ -2,6 +2,8 @@ package com.clarkelamothe.intermedia.di
 
 import com.clarkelamothe.intermedia.data.characters.CharactersDataSource
 import com.clarkelamothe.intermedia.data.characters.CharactersService
+import com.clarkelamothe.intermedia.data.events.EventsDataSource
+import com.clarkelamothe.intermedia.data.events.EventsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,5 +39,14 @@ class DataModule {
     @Provides
     fun provideCharactersDataSource(characterService: CharactersService): CharactersDataSource {
         return CharactersDataSource(characterService)
+    }
+
+    @Provides
+    fun provideEventsService(@ApiMarvel retrofit: Retrofit): EventsService =
+        retrofit.create(EventsService::class.java)
+
+    @Provides
+    fun provideEventsDataSource(eventsService: EventsService): EventsDataSource {
+        return EventsDataSource(eventsService)
     }
 }
