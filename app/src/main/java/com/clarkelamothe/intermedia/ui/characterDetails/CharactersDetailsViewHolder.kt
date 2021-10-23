@@ -13,7 +13,7 @@ class CharactersDetailsViewHolder(
     fun bind(comic: ComicsResult) {
         binding.apply {
             comicName.text = comic.title
-            comicYear.text = comic.resourceURI
+            comicYear.text = comic.dates[0].date
         }
     }
 }
