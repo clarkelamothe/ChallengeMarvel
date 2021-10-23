@@ -4,4 +4,6 @@ import javax.inject.Inject
 
 class CharactersRepository @Inject constructor(private val charactersDataSource: CharactersDataSource) {
     suspend fun characters() = charactersDataSource.getCharacters()
+
+    suspend fun comics(characterId: String) = charactersDataSource.getComics(characterId)
 }

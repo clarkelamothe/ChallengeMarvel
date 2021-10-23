@@ -5,19 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.clarkelamothe.intermedia.R
 import com.clarkelamothe.intermedia.data.Resource
 import com.clarkelamothe.intermedia.databinding.FragmentCharactersBinding
+import com.clarkelamothe.intermedia.utils.imageUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
-    private val charactersViewModel: CharactersViewModel by viewModels()
     private lateinit var binding: FragmentCharactersBinding
     private lateinit var charactersAdapter: CharactersAdapter
+    private val charactersViewModel: CharactersViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +48,12 @@ class CharactersFragment : Fragment() {
 
     fun onCharacterClick(position: Int) {
         val clickedItem = charactersAdapter.characters[position]
-        Toast.makeText(context, "${clickedItem.id}", Toast.LENGTH_LONG).show()
-        findNavController().navigate(R.id.goToDetailsFragment)
+        val bundle = bundleOf(
+            "characterName" to clickedItem.name,
+            "imageUrl" to imageUrl(clickedItem.thumbnail.path, clickedItem.thumbnail.extension),
+            "description" to clickedItem.description,
+            "id" to clickedItem.id
+        )
+        findNavController().navigate(R.id.goToDetailsFragment, bundle)
     }
 }

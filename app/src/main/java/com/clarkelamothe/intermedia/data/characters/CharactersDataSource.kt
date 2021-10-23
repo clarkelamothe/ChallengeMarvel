@@ -12,4 +12,8 @@ class CharactersDataSource @Inject constructor(
     suspend fun getCharacters() = getResult {
         charactersService.fetchCharacters(PUBLIC_KEY, HASH, TS)
     }
+
+    suspend fun getComics(characterId: String) = getResult {
+        charactersService.fetchComicsByCharacterId(characterId, PUBLIC_KEY, HASH, TS)
+    }
 }
