@@ -2,23 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_header"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/secondaryColor"
-    tools:context=".ui.events.EventsFragment">
+    android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_events"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Title2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="1"
-        tools:listitem="@layout/card_events" />
-
-
+        tools:text="COMICS TO DISCUSS" />
 </androidx.constraintlayout.widget.ConstraintLayout>
