@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/character_details_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/character_thumbnail"
         android:scaleType="centerCrop"
@@ -42,7 +42,6 @@
         android:textAllCaps="true"
         android:textAppearance="@style/Title1"
         android:textColor="@color/black"
-        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/character_details_description"
         app:layout_constraintStart_toStartOf="@+id/character_details_description"
@@ -55,5 +54,16 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:listitem="@layout/card_comics" />
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

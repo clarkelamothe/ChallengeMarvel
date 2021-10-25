@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -31,9 +32,10 @@ class CharactersFragment : Fragment() {
         charactersViewModel.characterResult.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> {
-                    Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
+                    binding.loading.root.isVisible = true
                 }
                 Resource.Status.SUCCESS -> {
+                    binding.loading.root.isVisible = false
                     charactersAdapter = CharactersAdapter(it.data!!.results, this)
                     binding.rvCharacters.adapter = charactersAdapter
                 }

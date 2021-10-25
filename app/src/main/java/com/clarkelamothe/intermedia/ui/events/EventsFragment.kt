@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.clarkelamothe.intermedia.data.Resource
@@ -30,8 +31,10 @@ class EventsFragment : Fragment() {
         eventsViewModel.eventsResult.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> {
+                    binding.loading.root.isVisible = true
                 }
                 Resource.Status.SUCCESS -> {
+                    binding.loading.root.isVisible = false
                     eventsAdapter = EventsAdapter(it.data!!.results, this)
                     binding.rvEvents.adapter = eventsAdapter
                 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.clarkelamothe.intermedia.data.Resource
@@ -29,8 +30,10 @@ class CharacterDetailsFragment() : Fragment() {
         charactersDetailsViewModel.comicResult.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> {
+                    binding.loading.root.isVisible = true
                 }
                 Resource.Status.SUCCESS -> {
+                    binding.loading.root.isVisible = false
                     charactersDetailsAdapter = CharactersDetailsAdapter(it.data!!.results)
                     binding.rvComics.adapter = charactersDetailsAdapter
                 }
