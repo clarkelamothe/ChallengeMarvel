@@ -23,6 +23,9 @@
     <string name="character_thumbnail">Image of the marvel hero</string>
     <string name="character_details_comics_header">Appears in these comics</string>
     <string name="error_message">Oops! There are some missing inputs</string>
+    <string name="password_error">Seems there is a password mismatch</string>
+    <string name="missing_inputs_error">Oops! There are some missing inputs</string>
+    <string name="error_creating_user">Oops! Problem creating user</string>
 
 
 </resources>
