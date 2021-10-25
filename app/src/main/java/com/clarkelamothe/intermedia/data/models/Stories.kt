@@ -1,7 +1,6 @@
 package com.clarkelamothe.intermedia.data.models
 
-
-data class Events(
+data class Stories(
     val available: Int,
     val collectionURI: String,
     val items: List<Item>,

@@ -45,10 +45,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getUserData() {
-//        val email = binding.etEmail.text.toString()
-//        val password = binding.etPassword.text.toString()
-        val email = "test@test.com"
-        val password = "test@123"
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
+
         if (email.isNotEmpty() && password.isNotEmpty()) {
             authUser(email, password)
         } else Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
