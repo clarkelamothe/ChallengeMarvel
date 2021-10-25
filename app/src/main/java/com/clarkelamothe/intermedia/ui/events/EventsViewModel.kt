@@ -27,10 +27,9 @@ class EventsViewModel @Inject constructor(
 
     init {
         getEventsResponse()
-        getComicsResponse("116")
     }
 
-    private fun getEventsResponse() = viewModelScope.launch(Dispatchers.Main) {
+    fun getEventsResponse() = viewModelScope.launch(Dispatchers.Main) {
         _eventResult.value = Resource.loading()
         val result = withContext(Dispatchers.IO) {
             eventsRepository.events()

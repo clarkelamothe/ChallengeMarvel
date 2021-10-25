@@ -67,7 +67,6 @@
             android:layout_marginBottom="22dp"
             app:boxStrokeErrorColor="@color/colorAccent"
             app:endIconTint="@color/secondaryColor"
-            app:errorEnabled="true"
             app:errorTextColor="@color/colorAccent"
             app:passwordToggleContentDescription="password"
             app:passwordToggleEnabled="true"

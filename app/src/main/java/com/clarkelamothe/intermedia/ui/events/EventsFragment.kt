@@ -28,35 +28,7 @@ class EventsFragment : Fragment() {
         binding = FragmentEventsBinding.inflate(inflater, container, false)
         binding2 = CardEventsBinding.inflate(inflater, container, false)
 
-        eventsViewModel.eventsResult.observe(viewLifecycleOwner, {
-            when (it.status) {
-                Resource.Status.LOADING -> {
-                    binding.loading.root.isVisible = true
-                }
-                Resource.Status.SUCCESS -> {
-                    binding.loading.root.isVisible = false
-                    eventsAdapter = EventsAdapter(it.data!!.results, this)
-                    binding.rvEvents.adapter = eventsAdapter
-                }
-                Resource.Status.ERROR -> {
-                    Toast.makeText(context, "Oops! Something went wrong.", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
-
-        eventsViewModel.comicsResult.observe(viewLifecycleOwner, {
-            when (it.status) {
-                Resource.Status.LOADING -> {
-                }
-                Resource.Status.SUCCESS -> {
-                    comicsAdapter = ComicsAdapter(it.data!!.results)
-                    binding2.rvEventComics.adapter = comicsAdapter
-                }
-                Resource.Status.ERROR -> {
-                    Toast.makeText(context, "Oops! Something went wrong.", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
+        loadEvent()
 
         showResult()
 
@@ -65,11 +37,72 @@ class EventsFragment : Fragment() {
 
     fun onEventClick(position: Int) {
         val id = eventsAdapter.events[position].id.toString()
-        eventsViewModel.getComicsResponse(id)
+        loadComics(id)
     }
 
     private fun showResult() {
         binding2.expand.rotation = 180F
 //        binding2.rvEventComics.isVisible = true
+    }
+
+
+    private fun loadEvent() {
+        eventsViewModel.eventsResult.observe(viewLifecycleOwner, {
+            when (it.status) {
+                Resource.Status.LOADING -> {
+                    loading()
+                }
+                Resource.Status.SUCCESS -> {
+                    success()
+                    eventsAdapter = EventsAdapter(it.data!!.results, this)
+                    binding.rvEvents.adapter = eventsAdapter
+                }
+                Resource.Status.ERROR -> {
+                    retry()
+                }
+            }
+        })
+    }
+
+    private fun loadComics(id: String) {
+        eventsViewModel.comicsResult.observe(viewLifecycleOwner, {
+            when (it.status) {
+                Resource.Status.LOADING -> {
+                }
+                Resource.Status.SUCCESS -> {
+                    eventsViewModel.getComicsResponse(id)
+                    comicsAdapter = ComicsAdapter(it.data!!.results)
+                    binding2.rvEventComics.adapter = comicsAdapter
+                }
+                Resource.Status.ERROR -> {
+                    Toast.makeText(context, "Oops! Something went wrong.", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
+
+    private fun retry() {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = true
+            error.retry.setOnClickListener {
+                eventsViewModel.getEventsResponse()
+            }
+        }
+    }
+
+    private fun loading() {
+        binding.apply {
+            loading.root.isVisible = true
+            error.root.isVisible = false
+        }
+    }
+
+    private fun success() {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = false
+        }
     }
 }
