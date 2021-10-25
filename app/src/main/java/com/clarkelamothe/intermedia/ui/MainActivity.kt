@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.clarkelamothe.intermedia.R
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.topAndBottomBar.barTop.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
         navController = findNavController(R.id.fragmentContainerView)
         bottomNavigationView = binding.topAndBottomBar.barBottom.bottomNavView
         appBarConfiguration =
@@ -34,5 +36,19 @@ class MainActivity : AppCompatActivity() {
             itemIconTintList = null
             setupWithNavController(navController)
         }
+        setActionBarTitle("Marvel Challenge")
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragmentContainerView)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun setActionBarTitle(title: String?) {
+        binding.topAndBottomBar.barTop.topTitle.text = title
+    }
+
+    fun changeBackButton(resId: Int) {
+        binding.topAndBottomBar.barTop.toolbar.setNavigationIcon(resId)
     }
 }
