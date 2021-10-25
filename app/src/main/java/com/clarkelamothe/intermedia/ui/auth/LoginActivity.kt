@@ -26,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         initData()
     }
@@ -50,12 +49,9 @@ class LoginActivity : AppCompatActivity() {
 //        val password = binding.etPassword.text.toString()
         val email = "test@test.com"
         val password = "test@123"
-
         if (email.isNotEmpty() && password.isNotEmpty()) {
             authUser(email, password)
-        } else {
-            Toast.makeText(this, "Oops! There are some missing inputs", Toast.LENGTH_SHORT).show()
-        }
+        } else Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
     }
 
     private fun authUser(email: String, password: String) {
@@ -69,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             finish()
         } else {
-            Toast.makeText(this, "Authentication failed...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -81,7 +77,6 @@ class LoginActivity : AppCompatActivity() {
                 override fun onSuccess(result: LoginResult) {
                     Log.d(ContentValues.TAG, "facebook:onSuccess:$result")
                     handleFacebookAccessToken(result.accessToken)
-                    // start home activity
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                     finish()
                 }

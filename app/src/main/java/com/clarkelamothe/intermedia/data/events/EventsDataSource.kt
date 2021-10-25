@@ -2,6 +2,8 @@ package com.clarkelamothe.intermedia.data.events
 
 import com.clarkelamothe.intermedia.data.BaseDataSource
 import com.clarkelamothe.intermedia.utils.ApiDetails
+import com.clarkelamothe.intermedia.utils.ApiDetails.LIMIT_EVENT
+import com.clarkelamothe.intermedia.utils.ApiDetails.ORDER_BY
 import javax.inject.Inject
 
 class EventsDataSource @Inject constructor(
@@ -11,8 +13,8 @@ class EventsDataSource @Inject constructor(
         eventsService.fetchEvents(ApiDetails.PUBLIC_KEY,
             ApiDetails.HASH,
             ApiDetails.TS,
-            "startDate",
-            25)
+            ORDER_BY,
+            LIMIT_EVENT)
     }
 
     suspend fun getComics(eventId: String) = getResult {

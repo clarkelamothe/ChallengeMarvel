@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.clarkelamothe.intermedia.R
 import com.clarkelamothe.intermedia.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -45,11 +46,12 @@ class SignupActivity : AppCompatActivity() {
             if (password == confirmPassword) {
                 saveUser(email, password)
             } else {
-                Toast.makeText(this, "Seems there is a password mismatch", Toast.LENGTH_SHORT)
+                Toast.makeText(this, getString(R.string.password_error), Toast.LENGTH_SHORT)
                     .show()
             }
         } else {
-            Toast.makeText(this, "Oops! There are some missing inputs", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.missing_inputs_error), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -64,7 +66,7 @@ class SignupActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         } else {
-            Toast.makeText(this, "Oops! Problem creating user", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_creating_user), Toast.LENGTH_SHORT).show()
         }
     }
 }

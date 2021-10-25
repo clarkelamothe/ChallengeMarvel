@@ -9,8 +9,8 @@ import javax.inject.Inject
 class CharactersDataSource @Inject constructor(
     private val charactersService: CharactersService,
 ) : BaseDataSource() {
-    suspend fun getCharacters() = getResult {
-        charactersService.fetchCharacters(PUBLIC_KEY, HASH, TS)
+    suspend fun getCharacters(offset: Int, limit: Int) = getResult {
+        charactersService.fetchCharacters(PUBLIC_KEY, HASH, TS, offset, limit)
     }
 
     suspend fun getComics(characterId: String) = getResult {

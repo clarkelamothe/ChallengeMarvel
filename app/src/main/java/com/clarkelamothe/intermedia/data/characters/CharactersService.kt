@@ -16,6 +16,8 @@ interface CharactersService {
         @Query("apikey") api_key: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String,
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int,
     ): Response<MarvelResponse<Data<List<CharacterResult>>>>
 
     @GET("characters/{characterId}/comics")

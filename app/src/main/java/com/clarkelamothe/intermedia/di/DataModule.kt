@@ -4,6 +4,7 @@ import com.clarkelamothe.intermedia.data.characters.CharactersDataSource
 import com.clarkelamothe.intermedia.data.characters.CharactersService
 import com.clarkelamothe.intermedia.data.events.EventsDataSource
 import com.clarkelamothe.intermedia.data.events.EventsService
+import com.clarkelamothe.intermedia.utils.ApiDetails.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,8 +14,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val API_URL = "https://gateway.marvel.com/v1/public/"
-
 @Module
 @InstallIn(SingletonComponent::class)
 class DataModule {
@@ -22,7 +21,7 @@ class DataModule {
     @ApiMarvel
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(API_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()

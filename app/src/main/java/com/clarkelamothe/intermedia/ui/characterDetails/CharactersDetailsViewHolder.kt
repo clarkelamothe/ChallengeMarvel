@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.clarkelamothe.intermedia.data.models.ComicsResult
 import com.clarkelamothe.intermedia.databinding.CardComicsBinding
+import com.clarkelamothe.intermedia.utils.parseYear
 
 class CharactersDetailsViewHolder(
     view: View,
@@ -13,7 +14,7 @@ class CharactersDetailsViewHolder(
     fun bind(comic: ComicsResult) {
         binding.apply {
             comicName.text = comic.title
-            comicYear.text = comic.dates[0].date
+            comicYear.text = parseYear(comic.dates[0].date)
         }
     }
 }
