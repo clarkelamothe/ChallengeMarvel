@@ -20,15 +20,16 @@
         android:id="@+id/imageView"
         android:layout_width="126dp"
         android:layout_height="136dp"
+        android:contentDescription="@string/logo_description"
         app:layout_constraintBottom_toBottomOf="@id/black_box"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/logo_description"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -43,8 +44,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeErrorColor="@color/colorAccent"
-            android:layout_marginBottom="22dp">
+            android:layout_marginBottom="22dp"
+            app:boxStrokeErrorColor="@color/colorAccent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
@@ -64,12 +65,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
-            app:passwordToggleContentDescription="password"
-            app:passwordToggleEnabled="true"
             app:boxStrokeErrorColor="@color/colorAccent"
             app:endIconTint="@color/secondaryColor"
             app:errorEnabled="true"
             app:errorTextColor="@color/colorAccent"
+            app:passwordToggleContentDescription="password"
+            app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/primaryLightColor">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -91,6 +92,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:text="@string/button_login_text" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
         <LinearLayout
             android:id="@+id/create_account"
@@ -115,5 +124,6 @@
 
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
