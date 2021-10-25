@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.clarkelamothe.intermedia.R
 import com.clarkelamothe.intermedia.data.Resource
 import com.clarkelamothe.intermedia.databinding.FragmentCharactersBinding
+import com.clarkelamothe.intermedia.utils.ApiDetails.OFFSET
 import com.clarkelamothe.intermedia.utils.imageUrl
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,16 +50,15 @@ class CharactersFragment : Fragment() {
         charactersViewModel.characterResult.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> {
-                    binding.loading.root.isVisible = true
+                    loading()
                 }
                 Resource.Status.SUCCESS -> {
-                    binding.loading.root.isVisible = false
+                    success()
                     charactersAdapter = CharactersAdapter(it.data!!.results, this)
                     binding.rvCharacters.adapter = charactersAdapter
                 }
                 Resource.Status.ERROR -> {
-                    Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_LONG)
-                        .show()
+                    retry()
                 }
             }
         })
@@ -74,5 +73,29 @@ class CharactersFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun retry() {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = true
+            error.retry.setOnClickListener {
+                charactersViewModel.getCharactersResponse(OFFSET)
+            }
+        }
+    }
+
+    private fun loading() {
+        binding.apply {
+            loading.root.isVisible = true
+            error.root.isVisible = false
+        }
+    }
+
+    private fun success() {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = false
+        }
     }
 }

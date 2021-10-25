@@ -4,7 +4,6 @@
     <string name="fb_login_protocol_scheme">fb645604580152211</string>
     <string name="facebook_auth_error">Error login with facebook</string>
 
-
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
     <string name="login_confirm_password_hint">Confirm Password</string>
@@ -18,14 +17,15 @@
     <!--    bottom nav-->
     <string name="bottom_nav_first_item_text">Characters</string>
     <string name="bottom_nav_second_item_text">Events</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="character_thumbnail">Image of the marvel hero</string>
     <string name="character_details_comics_header">Appears in these comics</string>
-    <string name="error_message">Oops! There are some missing inputs</string>
+    <string name="error_message">Oops! Something went wrong</string>
     <string name="password_error">Seems there is a password mismatch</string>
     <string name="missing_inputs_error">Oops! There are some missing inputs</string>
     <string name="error_creating_user">Oops! Problem creating user</string>
+    <string name="btn_retry_text">retry</string>
 
 
 </resources>

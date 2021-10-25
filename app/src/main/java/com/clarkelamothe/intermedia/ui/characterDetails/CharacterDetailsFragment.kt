@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -48,18 +47,42 @@ class CharacterDetailsFragment() : Fragment() {
         charactersDetailsViewModel.comicResult.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> {
-                    binding.loading.root.isVisible = true
+                    loading()
                 }
                 Resource.Status.SUCCESS -> {
-                    binding.loading.root.isVisible = false
+                    success()
                     charactersDetailsAdapter = CharactersDetailsAdapter(it.data!!.results)
                     binding.rvComics.adapter = charactersDetailsAdapter
                 }
                 Resource.Status.ERROR -> {
-                    Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_LONG)
-                        .show()
+                    retry(arguments?.getInt("id").toString())
                 }
             }
         })
+    }
+
+
+    private fun retry(id: String) {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = true
+            error.retry.setOnClickListener {
+                charactersDetailsViewModel.getComicsResponse(id)
+            }
+        }
+    }
+
+    private fun loading() {
+        binding.apply {
+            loading.root.isVisible = true
+            error.root.isVisible = false
+        }
+    }
+
+    private fun success() {
+        binding.apply {
+            loading.root.isVisible = false
+            error.root.isVisible = false
+        }
     }
 }
