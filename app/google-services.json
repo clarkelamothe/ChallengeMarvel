@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "372970409961",
+    "project_id": "intermediamarvelchallenge",
+    "storage_bucket": "intermediamarvelchallenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372970409961:android:79515a7f07279ab3424578",
+        "android_client_info": {
+          "package_name": "com.clarkelamothe.intermedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372970409961-2819e40jgnktpncr2obr7h3nt5r5ijie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clarkelamothe.intermedia",
+            "certificate_hash": "1f38783f91b76cf0360f2fce7a8c7ed49b566605"
+          }
+        },
+        {
+          "client_id": "372970409961-eu105d7ldfpamtoo8pq130crh4hdhgho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8irz0G_RjIytd-UiP23cBiSLT8i8wxqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372970409961-eu105d7ldfpamtoo8pq130crh4hdhgho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/bar_bottom"
+        layout="@layout/bar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <include
+        android:id="@+id/bar_top"
+        layout="@layout/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="top"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="56dp" />
+</FrameLayout>
